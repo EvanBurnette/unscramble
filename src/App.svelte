@@ -1,4 +1,5 @@
 <script lang="ts">
+  // TODO: create phrase finding web workers
   import ScrambledWord from "./lib/ScrambledWord.svelte";
   import ScrambledPhrase from "./lib/ScrambledPhrase.svelte";
   import words_alpha from "./assets/words_alpha.txt?raw";

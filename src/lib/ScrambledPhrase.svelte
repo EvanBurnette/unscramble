@@ -1,6 +1,7 @@
 <script>
   import WordBlanks from "./WordBlanks.svelte";
   import { scrambledPhrase } from "./stores.js";
+  export let phrases = [];
 </script>
 
 <main>
@@ -10,4 +11,9 @@
     Number of letters {$scrambledPhrase.length}
   </p>
   <WordBlanks />
+  <ul>
+    {#each phrases as phrase}
+      <li>{phrase}</li>
+    {/each}
+  </ul>
 </main>

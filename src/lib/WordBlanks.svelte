@@ -1,4 +1,5 @@
 <script>
+  // TODO: store a number of blank words for running phrase finding on
   import { wordBlanks } from "./stores";
 </script>
 
