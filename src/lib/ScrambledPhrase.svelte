@@ -1,12 +1,13 @@
 <script>
   import WordBlanks from "./WordBlanks.svelte";
-  import { scrambledPhrase } from "./stores.js";
+  import { scrambledPhrase } from "./stores";
   export let phrases = [];
 </script>
 
 <main>
-  <label for="scrambledPhrase">Scrambled Phrase</label>
-  <input type="text" id="scrambledPhrase" value={$scrambledPhrase} />
+  <!-- <label for="scrambledPhrase">Scrambled Phrase</label>
+  <input type="text" id="scrambledPhrase" value={$scrambledPhrase} /> -->
+  <span>Scrambled Phrase: </span><span> {$scrambledPhrase}</span>
   <p>
     Number of letters {$scrambledPhrase.length}
   </p>

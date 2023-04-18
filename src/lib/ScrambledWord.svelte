@@ -1,10 +1,19 @@
 <script lang="ts">
   import WordButtons from "./WordButtons.svelte";
+  import { scrambledPhraseLetters } from "./stores";
+  // import { onDestroy } from "svelte";
+
+  // onDestroy(() => {
+  //   scrambledPhraseLetters.update((arr) => {
+  //     arr[idx] = [];
+  //     return arr;
+  //   });
+  // });
 
   let letters: string;
   let suggestions = [];
   export let getSuggestions: Function;
-  export let idx;
+  export let idx: number;
   let otherSelected = false;
 
   const setOtherSelected = (val: boolean) => {
@@ -28,6 +37,10 @@
     />
     <button
       on:click={() => {
+        scrambledPhraseLetters.update((arr) => {
+          arr[idx] = [];
+          return arr;
+        });
         nodeRef.parentNode.removeChild(nodeRef);
       }}>X</button
     >

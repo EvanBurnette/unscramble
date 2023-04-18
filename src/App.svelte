@@ -4,6 +4,7 @@
   import ScrambledPhrase from "./lib/ScrambledPhrase.svelte";
   import words_alpha from "./assets/words_alpha.txt?raw";
   import _ from "lodash";
+  import { scrambledPhrase } from "./lib/stores";
 
   const countLetters = (word) => {
     const counts = {};
@@ -33,6 +34,23 @@
   };
   let scrambledWords = [];
   scrambledWords.length = 1;
+
+  import { wordLengths } from "./lib/stores";
+
+  let solveBtn;
+  $: {
+    if (solveBtn != undefined) {
+      if (
+        $wordLengths.reduce((acc, cur) => acc + cur, 0) ===
+          $scrambledPhrase.length &&
+        $scrambledPhrase.length !== 0
+      ) {
+        solveBtn.classList.add("readyToSolve");
+      } else {
+        solveBtn.classList.remove("readyToSolve");
+      }
+    }
+  }
 </script>
 
 <main>
@@ -47,10 +65,15 @@
     + ADD SCRAMBLED WORD
   </button>
   <ScrambledPhrase />
+  <button id="solveNow" bind:this={solveBtn}> SOLVE NOW! </button>
 </main>
 
 <style>
   :global(.selected) {
+    background: lightgreen;
+    color: black;
+  }
+  :global(.readyToSolve) {
     background: lightgreen;
     color: black;
   }

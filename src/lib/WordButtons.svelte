@@ -5,7 +5,7 @@
   export let otherSelected: boolean;
   let letterButtons = [];
   import { scrambledPhraseLetters, scrambledPhrase } from "./stores";
-  export let idx;
+  export let idx: number;
   let letterSelected = new Array(suggestion.length).fill(false);
   $: selectedLetters = suggestion.split("").filter((letter, i) => {
     return letterSelected[i];
@@ -35,7 +35,7 @@
       on:click={() => {
         selectedWord = false;
         setOtherSelected(false);
-        scrambledPhrase[idx] = [];
+        // scrambledPhraseLetters[idx] = [];
       }}>X</button
     >
   </li>

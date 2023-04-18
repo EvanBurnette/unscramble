@@ -9,3 +9,18 @@ export const scrambledPhrase = derived(
 );
 
 export const wordBlanks = writable([]);
+
+export const wordLengths = derived(wordBlanks, ($wordBlanks) => {
+  let count = 0;
+  const lengths = [];
+  for (const c of $wordBlanks) {
+    if (c === ".") {
+      count++;
+    } else if (c === " ") {
+      lengths.push(count);
+      count = 0;
+    }
+  }
+  lengths.push(count);
+  return lengths;
+});
